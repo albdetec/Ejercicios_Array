@@ -8,28 +8,20 @@ Mostrar la lista de alumnos junto con su nota correspondiente: */
 
 
 let nombresArray = [
-    "Valentina",
-    "Renata",
-    "Sofía",
-    "Emma",
-    "Isabella",
-    "Camila",
-    "Regina",
-    "Victoria",
-    "Natalia",
-    "Santiago",
-    "Mateo",
-    "Leonardo",
-    "Emiliano",
-    "Sebastián",
-    "Gael",
-    "Alejandro",
-    "Diego",
-    "Nicolás"
+    ["Valentina", "González", "Rodrigo"],
+    ["Renata", "Escribano", "Jiménez"],
+    ["Sofía", "Pérez", "Segura"],
+    ["Emma", "Aguado", "Bernabé"],
+    ["Santiago", "González", "Rojo"],
+    ["Isabella", "Blanco", "Cáceres"],
+    ["Camila", "de las Heras", "Ortiz"],
+    ["Leonardo", "Martín", "Benito"],
+    ["Sebastián", "Naval", "Suárez"],
+    ["Pedro", "Sánchez", "Rodríguez"],
 ]
 
 let notasArray = [
-    "7",
+    "9",
     "5",
     "6",
     "3",
@@ -38,15 +30,7 @@ let notasArray = [
     "4",
     "7",
     "6",
-    "8",
-    "5",
-    "7",
-    "9",
-    "7",
-    "8",
-    "5",
-    "5",
-    "6"
+    "8"
 ]
 
 const listado = document.getElementById("listado")
@@ -58,14 +42,12 @@ let total = Number(0)
 let goodGrade = []
 notaMayor = 0
 notaMenor = 10
-losMasListos = ""
-
 
 for (let i = 0; i < nombresArray.length; i++) {
     totalArray.push([nombresArray[i], notasArray[i]])
-
-    writeTable(listado, nombresArray[i], notasArray[i])
+    writeTable(listado, nombresArray[i][0], nombresArray[i][1], nombresArray[i][2], notasArray[i])
 }
+console.log(totalArray)
 
 for (let f = 0; f < notasArray.length; f++) {
     total = (total + Number(notasArray[f]))
@@ -76,18 +58,17 @@ for (let f = 0; f < notasArray.length; f++) {
 let media = Number.parseFloat(total / notasArray.length).toFixed(2)
 const mediaTxt = media.replace(".", ",");
 
-writeTable(masMedia, "Media", mediaTxt)
+writeTable(masMedia, "Media", mediaTxt, "", "")
 
 for (let g = 0; g < totalArray.length; g++) {
     goodGrade = totalArray[g]
 
     if (goodGrade[1] > media) {
-        writeTable(masMedia, nombresArray[g], notasArray[g])
+        writeTable(masMedia, nombresArray[g][0], nombresArray[g][1], nombresArray[g][2], notasArray[g])
     }
 
     if (goodGrade[1] > notaMayor) {
         notaMayor = goodGrade[1]
-        losMasListos = goodGrade[0]
     }
 
     if(goodGrade[1] < notaMenor) {
@@ -99,20 +80,20 @@ for (let g = 0; g < totalArray.length; g++) {
 for (let h = 0; h < totalArray.length; h++) {
     goodGrade = totalArray[h]
     if (goodGrade[1] === notaMayor) {
-        writeTable(masNota, goodGrade[0], goodGrade[1])
+        writeTable(masNota, goodGrade[0][0], goodGrade[0][1], goodGrade[0][2], goodGrade[1])
 
     }
 
     if(goodGrade[1] === notaMenor) {
-        writeTable(menosNota, goodGrade[0], goodGrade[1])
+        writeTable(menosNota, goodGrade[0][0], goodGrade[0][1], goodGrade[0][2], goodGrade[1])
     }
 }
 
 
 //PARA RELLENAR LAS TABLAS
 
-function writeTable(a, b, c) {
-    a.innerHTML = a.innerHTML + `<tr><td style="text-align:left;">${b}</td><td>${c}</td></tr>`
+function writeTable(a, b, c, d, e) {
+    a.innerHTML = a.innerHTML + `<tr><td style="text-align:left;">${b}</td><td>${c}</td><td>${d}</td><td>${e}</td></tr>`
 }
 
 
