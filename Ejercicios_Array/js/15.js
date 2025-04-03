@@ -66,6 +66,8 @@ function fillLists() {
             else integerListTitle.innerHTML = `Hay ${integerArray.length} números enteros`
 
             totalInteger.innerHTML = `${integerArray.reduce((a, b) => a + b, 0)}`
+            let media = (integerArray.reduce((a, b) => a + b, 0) + decimalArray.map(c => parseFloat(c)).reduce((a, b) => a + b, 0)) / (integerArray.length + decimalArray.length)
+            totalMedia.innerHTML = `${media}`
         }
         else {
             integerArray.push(userNumberNum)
@@ -74,7 +76,6 @@ function fillLists() {
         }
     }
     else if (Number.isInteger(userNumberNum) === false) {
-        userNumberNum = userNumber.replace('.', ',')
         decimalArray.push(userNumberNum)
         console.log(decimalArray)
         windowPrompt()
