@@ -65,17 +65,16 @@ finalArray = finalArray.sort()
 
 
 //PINTO LA RELACIÓN DE NÚMEROS QUE HAY
-for(let i = 0; i < finalArray.length; i++) {
 
-    let finalNumber = finalArray[i]
+finalArray.forEach(function(num, indice) {
 
-    //CUANDO SOLO HAY UNO DE ELLOS
-    if (finalNumber[1] === 1) {
-        listNumbers.innerHTML = listNumbers.innerHTML + `<p>Hay un número ${finalNumber[0]} </p>`
+     //CUANDO SOLO HAY UNO DE ELLOS
+     if (num[1] === 1) {
+        listNumbers.innerHTML = listNumbers.innerHTML + `<p>Hay un número ${num[0]} </p>`
     }
 
     //CUANDO HAY MÁS DE UNO DE ELLOS
-    else listNumbers.innerHTML = listNumbers.innerHTML + `<p>Hay ${finalNumber[1]} números ${finalNumber[0]} </p>` 
-} 
+    else listNumbers.innerHTML = listNumbers.innerHTML + `<p>Hay ${num[1]} números ${num[0]} </p>` 
+})
 
 
