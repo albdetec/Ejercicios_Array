@@ -52,18 +52,23 @@ function fillLists() {
 
     if (Number.isInteger(userNumberNum) === true) {
         if (userNumber < 0) {
-            for (let i = 0; i < integerArray.length; i++) {
-                integerList.innerHTML = integerList.innerHTML + `<li>${integerArray[i]}</li>`
-            }
-            for (let j = 0; j < decimalArray.length; j++) {
-                decimalList.innerHTML = decimalList.innerHTML + `<li>${decimalArray[j]}</li>`
-            }
+            integerArray.forEach(function (num) {
+                integerList.innerHTML = integerList.innerHTML + `<li>${num}</li>`
+            })
 
+            decimalArray.forEach(function (num) {
+                decimalList.innerHTML = decimalList.innerHTML + `<li>${num}</li>`
+            });
 
             if (integerArray.length === 1) {
                 integerListTitle.innerHTML = `Hay un solo número entero`
             }
             else integerListTitle.innerHTML = `Hay ${integerArray.length} números enteros`
+
+            if (decimalArray.length === 1) {
+                decimalListTitle.innerHTML = `Hay un solo número decimal`
+            }
+            else decimalListTitle.innerHTML = `Hay ${decimalArray.length} números decimales`
 
             totalInteger.innerHTML = `${integerArray.reduce((a, b) => a + b, 0)}`
             let media = (integerArray.reduce((a, b) => a + b, 0) + decimalArray.map(c => parseFloat(c)).reduce((a, b) => a + b, 0)) / (integerArray.length + decimalArray.length)
