@@ -13,19 +13,6 @@ span {
     font-size: 1.25rem;
 }
 
-.listado-container {
-    position: relative;
-    width: 25rem;
-    margin: 0 auto;
-}
-
-.listado {
-    width: 18.75rem;
-    margin: 0 auto;
-    text-align: center;
-    padding: 1.25rem;
-}
-
 .section-11 {
 
     background-color: rgb(71, 71, 135);
@@ -114,6 +101,10 @@ button {
     margin: 0 auto;
     text-align: center;
     padding: 1.25rem;
+}
+
+tbody>tr>:nth-child(4) {
+    text-align: center;
 }
 
 h3 {
