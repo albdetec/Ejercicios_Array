@@ -148,13 +148,13 @@ setTimeout(() => {
 //FUNCIÓN PARA PINTAR LOS ARRAYS
 function innerArray(e) {
     starWars.innerHTML = ""
-    for (let i = 0; i < e.length; i++) {
-
-        if (i === 0) {
-            starWars.innerHTML = starWars.innerHTML + `${e[i]}`
+    e.forEach(function(char, indice) {
+        
+        if (indice === 0) {
+            starWars.innerHTML = starWars.innerHTML + `${char}`
         }
-        else starWars.innerHTML = starWars.innerHTML + `, ${e[i]}`
-    }
+        else starWars.innerHTML = starWars.innerHTML + `, ${char}`
+    })
     charNumbers.innerHTML = `${miArray.length}`
 }
 
