@@ -43,15 +43,19 @@ let goodGrade = []
 notaMayor = 0
 notaMenor = 10
 
-for (let i = 0; i < nombresArray.length; i++) {
-    totalArray.push([nombresArray[i], notasArray[i]])
-    writeTable(listado, nombresArray[i][0], nombresArray[i][1], nombresArray[i][2], notasArray[i])
-}
-console.log(totalArray)
+nombresArray.forEach(function(nombre, indice) {
+    writeTable(listado, nombresArray[indice][0], nombresArray[indice][1], nombresArray[indice][2], notasArray[indice])
+    });
 
-for (let f = 0; f < notasArray.length; f++) {
-    total = (total + Number(notasArray[f]))
-}
+notasArray.forEach(function(nota) {
+    total = total + Number(nota)
+     if (nota > notaMayor) {
+        notaMayor = nota
+    }
+    if(nota < notaMenor) {
+        notaMenor = nota
+    }
+    });
 
 //CALCULO LA MEDIA, PONGO DOS DECIMALES Y CAMBIO EL PUNTO POR LA COMA
 
@@ -59,35 +63,18 @@ let media = Number.parseFloat(total / notasArray.length).toFixed(2)
 const mediaTxt = media.replace(".", ",");
 
 writeTable(masMedia, "Media", mediaTxt, "", "")
-
-for (let g = 0; g < totalArray.length; g++) {
-    goodGrade = totalArray[g]
-
-    if (goodGrade[1] > media) {
-        writeTable(masMedia, nombresArray[g][0], nombresArray[g][1], nombresArray[g][2], notasArray[g])
+   
+    notasArray.forEach(function(nota, indice) {
+         if (nota > media) {
+        writeTable(masMedia, nombresArray[indice][0], nombresArray[indice][1], nombresArray[indice][2], nota)
     }
-
-    if (goodGrade[1] > notaMayor) {
-        notaMayor = goodGrade[1]
-    }
-
-    if(goodGrade[1] < notaMenor) {
-        notaMenor = goodGrade[1]
-    }
-
-}
-
-for (let h = 0; h < totalArray.length; h++) {
-    goodGrade = totalArray[h]
-    if (goodGrade[1] === notaMayor) {
-        writeTable(masNota, goodGrade[0][0], goodGrade[0][1], goodGrade[0][2], goodGrade[1])
-
-    }
-
-    if(goodGrade[1] === notaMenor) {
-        writeTable(menosNota, goodGrade[0][0], goodGrade[0][1], goodGrade[0][2], goodGrade[1])
-    }
-}
+        if (nota === notaMayor) {
+            writeTable(masNota, nombresArray[indice][0], nombresArray[indice][1], nombresArray[indice][2], nota)
+        }
+        if (nota === notaMenor) {
+            writeTable(menosNota, nombresArray[indice][0], nombresArray[indice][1], nombresArray[indice][2], nota)
+        }
+    })
 
 
 //PARA RELLENAR LAS TABLAS
