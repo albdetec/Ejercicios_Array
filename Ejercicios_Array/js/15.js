@@ -52,13 +52,22 @@ function fillLists() {
 
     if (Number.isInteger(userNumberNum) === true) {
         if (userNumber < 0) {
+            
+            totalInteger.innerHTML = `${integerArray.reduce((a, b) => a + b, 0)}`
+            let media = (integerArray.reduce((a, b) => a + b, 0) + decimalArray.map(c => parseFloat(c)).reduce((a, b) => a + b, 0)) / (integerArray.length + decimalArray.length)
+            media = media.toString()
+            media = media.replace('.', ',')
+            totalMedia.innerHTML = `${media}`
+
             integerArray.forEach(function (num) {
                 integerList.innerHTML = integerList.innerHTML + `<li>${num}</li>`
             })
 
             decimalArray.forEach(function (num) {
+                num = num.toString()
+                num = num.replace(".", ",")
                 decimalList.innerHTML = decimalList.innerHTML + `<li>${num}</li>`
-            });
+            })
 
             if (integerArray.length === 1) {
                 integerListTitle.innerHTML = `Hay un solo número entero`
@@ -69,10 +78,6 @@ function fillLists() {
                 decimalListTitle.innerHTML = `Hay un solo número decimal`
             }
             else decimalListTitle.innerHTML = `Hay ${decimalArray.length} números decimales`
-
-            totalInteger.innerHTML = `${integerArray.reduce((a, b) => a + b, 0)}`
-            let media = (integerArray.reduce((a, b) => a + b, 0) + decimalArray.map(c => parseFloat(c)).reduce((a, b) => a + b, 0)) / (integerArray.length + decimalArray.length)
-            totalMedia.innerHTML = `${media}`
         }
         else {
             integerArray.push(userNumberNum)
