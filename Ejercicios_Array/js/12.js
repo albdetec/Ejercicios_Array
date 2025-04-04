@@ -14,13 +14,12 @@ let stringArray = ["Valencia", "Vitoria", "Alicante", "Madrid", "Sevilla", "Sala
 let newArray = []
 
 //PINTO EL ARRAY. PRIMERA LINEA SIN LA COMA
-for (let i = 0; i < stringArray.length; i++) {
-
-    if (i === 0) {
-        messyArray.innerHTML = messyArray.innerHTML + `${stringArray[i]}`
+stringArray.forEach(function(ciudad, indice) {
+    if ( indice === 0) {
+        messyArray.innerHTML = messyArray.innerHTML + `${ciudad}`
     }
-    else messyArray.innerHTML = messyArray.innerHTML + `, ${stringArray[i]}`
-}
+    else messyArray.innerHTML = messyArray.innerHTML + `, ${ciudad}`
+})
 
 //INICIO LA FUNCIÓN
 elementCompare(stringArray[0])
@@ -67,13 +66,12 @@ function elementCompare(e) {
 
 //PINTO EL ARRAY FINAL ORDENADO CON CIERTO DELAY
 setTimeout(() => {
-    for (let i = 0; i < newArray.length; i++) {
-
-        if (i === 0) {
-            tidyArray.innerHTML = tidyArray.innerHTML + `${newArray[i]}`
+    newArray.forEach(element => {
+        if (newArray.indexOf(element)=== 0) {
+            tidyArray.innerHTML = tidyArray.innerHTML + `${element}`
         }
-        else tidyArray.innerHTML = tidyArray.innerHTML + `, ${newArray[i]}`
-    }
+        else tidyArray.innerHTML = tidyArray.innerHTML + `, ${element}`
+    })
 },1000)
 
 
